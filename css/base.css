@@ -1,18 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 :root{
     --bg:#040a13;
     --panel:#071625;
     --panel2:#0a2033;
     --bgfs: #04111f;
-    --brdfs: #15517a;
+    --bghv: #082b49;
+    --brdfs: #6ee7b724;
     --line:#12446b;
     --blue:#12b8ff;
     --cyan:#73e5ff;
     --white:#f3f8ff;
     --muted:#a8bfd4;
-    --grad: linear-gradient(135deg, #60a5fa, #67e8f9, #a5b4fc);
+    --grad: linear-gradient(135deg, #178bd0, #73e5ff, #a5b4fc);
+    --btngrad: linear-gradient(110deg,#08baf3 0%,#178bd0 100%);
     --glow:0 0 28px #008dff24}
-    *{box-sizing:border-box}
+
+    *{
+        box-sizing:border-box
+    }
     html{
         scroll-behavior:smooth;
         scroll-padding-top:85px
@@ -21,7 +26,7 @@
         margin:0;
         background:var(--bg);
         color:var(--white);
-        font-family:Roboto,sans-serif;
+        font-family:Nunito,sans-serif;
         line-height:1.5;
         font-weight:400;
         font-size:16px;
@@ -32,9 +37,12 @@
         height: auto;
         width: 100%;
     }
+    p{
+       margin:0;
+    }
     h1, h2, h3, h4, h5, h6{
-    margin: 0;
-    font-family: Inter, sans-serif;
+        margin: 0;
+        font-family: Inter, sans-serif;
 }
     ul{
     margin: 0;
@@ -48,6 +56,12 @@
     .wrap{
         width:min(1280px,calc(100% - 42px));
         margin:0 auto;
+    }
+    .flex{
+        display:flex;
+    }
+    .blue{
+        color: var(--blue)
     }
     .topbar{
         position:absolute;
@@ -107,15 +121,18 @@
         justify-content:center;
         gap:9px;
         padding:12px 19px;
-        border:1px solid #2bc4ff;
         border-radius:32px;
-        background:linear-gradient(110deg,#08b8ef,#2376f4);
+        background: var(--btngrad);
         box-shadow:0 0 25px #009fff32;
         color:#fff;
-        font-size:12px;
-        font-weight:750;
+        font-family: Inter, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
         transition:transform .2s,filter .2s;
         cursor:pointer
+    }
+    .btn-icon{
+        fill:var(--white)
     }
     .btn:hover{
         transform:translateY(-2px);
@@ -125,6 +142,25 @@
         background:transparent;
         box-shadow:none;
         border-color:#148fd0
+    }
+    .heder-btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:9px;
+        padding:6px 15px;
+        border-radius:32px;
+        background: var(--btngrad);
+        box-shadow:0 0 25px #009fff32;
+        color:#fff;
+        font-family: Inter, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        transition:transform .2s,filter .2s;
+        cursor:pointer
+    }
+    .heder-btn:hover{
+        filter:brightness(1.12)
     }
     .hero{
         position:relative;
@@ -144,8 +180,9 @@
         background:linear-gradient(0deg,#040a13 0%,transparent 19%)
     }
     .hero-copy{
-        max-width:55%;
+        max-width:50%;
     }
+    
     .pill{
         display:inline-flex;
         align-items:center;
@@ -156,7 +193,6 @@
         background:#061e37d9;
         color:#c8edff;
         font-size:11px;
-        margin-bottom:12px;
     }
     .dot{
         width: 5px;
@@ -185,11 +221,11 @@
                 }
             }
     h1{
-        font-size:clamp(36px,4.6vw,59px);
+        font-size:clamp(36px,4.6vw,52px);
         line-height:1.03;
         letter-spacing:-.7px;
         margin-top:32px;
-        font-weight: semi-bold;
+        font-weight: 800;
     }
     h1 em{
         font-style: normal;
@@ -206,11 +242,15 @@
     }
     .hero-price{
         margin-bottom: 20px;
+        display: flex;
+        gap: 15px;
+        align-items: baseline;
         animation: slide-up .7s .28s both;
         font-size: 14px;
     }
     .hero-price i{
         font-weight: 700;
+        font-family: Inter, sans-serif;
         font-size: 34px;
         letter-spacing: -.03em;
         font-style: normal;
@@ -219,23 +259,97 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
+    .hero-tags{
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        margin: 30px 0 30px 0;
+    }
+    .tag{
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--blue);
+        background: var(--bgfs);
+        border: 1px solid var(--brdfs);
+        padding: 6px 14px;
+        border-radius: 100px;
+        white-space: nowrap;
+    }
+    .tag:hover{
+        background: var(--bghv);
+    }
     .hero-action{
         display:flex;
         justify-content:center;
         width:min(325px,100%);
-        margin:21px 0 17px
+        margin:21px 0 17px;
+        
     }
     .hero-action .btn{
         width:100%;
         padding:15px 22px;
-        font-size:14px
     }
+    .bage{
+        min-width:170px;
+        display:flex;
+        align-items:center;
+        gap:11px;
+        padding:11px 18px;
+        border:1px solid var(--brdfs);
+        border-radius:15px;
+        background:var(--bgfs);
+        white-space: nowrap;
+        font-size: 12px;
+    }
+    .bage:hover{
+        background:var(--bghv);
+    }
+    .bage-icon{
+        display:grid;
+        place-items:center;
+        width:39px;
+        height:39px;
+        flex-shrink:0;
+        border-radius:12px;
+        border:1px solid #155c8b;
+        background:#082b49;
+        color:var(--cyan);
+        font-size:19px
+    }
+     .icon-fill{
+        fill:var(--blue)
+    }
+    .float{
+        position: absolute;
+        top: 270px;
+        right: 100px;
+        animation:float 3s ease-in-out infinite
+    }
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    .business{
+        position:absolute;
+        top: 480px;
+        right: 670px;    
+    }
+    .shine{
+        isolation: isolate;
+        overflow: hidden;
+    }
+    .shine::after{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -75%;
+        left: -40%;
+        width: 17%;
+        height: 250%;
+        transform: rotate(32deg);
+        background: linear-gradient(90deg, transparent, #fff9, transparent);
+        animation: shine 4.2s ease-in-out infinite;
+    }
+  
+    @keyframes shine{0%,18%{left:-40%}76%,100%{left:130%}}
     
-    .float-text{
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
     .fact{
         min-width:170px;
         display:flex;
@@ -263,9 +377,6 @@
     .fact:hover{
         background:#082b49
     }
-    .icon-fill{
-        fill:var(--blue)
-    }
     .fact small{
         display:block;
         color:var(--muted);
@@ -274,36 +385,7 @@
     .fact strong{
         font-size:17px
     }
-    .bage{
-        position:absolute;
-        top: 470px;
-        right: 670px;    
-    }
-    .second{
-        position:relative;
-        isolation:isolate;
-        overflow:hidden;
-    }
-    .second::after{
-        content:"";
-        position:absolute;
-        z-index:-1;
-        top:-75%;
-        left:-40%;
-        width:17%;
-        height:250%;
-        transform:rotate(32deg);
-        background:linear-gradient(90deg,transparent,#fff9,transparent);
-        animation:shine 4.2s ease-in-out infinite
-    }
-    @keyframes shine{0%,18%{left:-40%}76%,100%{left:130%}}
-    .float{
-        position: absolute;
-        top: 250px;
-        right: 100px;
-        animation:float 3s ease-in-out infinite
-    }
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+   
  
     .task strong{white-space:nowrap}
     .task .copy{margin-left:auto;max-width:58%;color:#a9cce7;font-size:11px}
