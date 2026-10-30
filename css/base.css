@@ -574,11 +574,48 @@
         background: var(--bghv);
     }
     .btext{max-width: 250px;}  
-    .faq{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-    .faq details{border:1px solid #123b5c;border-radius:12px;background:#061522;padding:12px 14px;font-size:12px}
-    .faq summary{cursor:pointer;color:#d9ecfc}
-    .faq details p{color:var(--muted);font-size:11px;margin-bottom:2px}
-    .contact{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:25px;border:1px solid #125887;border-radius:20px;padding:27px;background:radial-gradient(ellipse at 10% 50%,#0b4675,#071524 58%,#06111d);box-shadow:var(--glow)}
+    .faq{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:9px}
+    .faq details{
+        border:1px solid #123b5c;
+        border-radius:12px;
+        background:#061522;
+        padding:12px 14px;
+        font-size:18px;
+    }
+    .faq summary{
+        list-style: none;
+        cursor:pointer;
+        color:#d9ecfc;
+        display: flex; 
+        justify-content: space-between;
+    }
+    .faq summary::after {
+        content: "▾"; 
+        transition: transform 0.2s ease; 
+    }
+    details[open] summary::after {
+       transform: rotate(180deg); 
+}
+    .faq details p{
+        margin-top: 16px;
+        color:var(--muted);
+        font-size:16px;}
+    .contact{
+        max-width: 800px;
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+        margin: 0 auto;
+        gap:25px;
+        border:1px solid #125887;
+        border-radius:20px;
+        padding:27px;
+        background:radial-gradient(ellipse at 10% 50%,#0b4675,#071524 58%,#06111d);
+        box-shadow:var(--glow)
+    }
     .contact h2{font-size:28px}
     .contact p{font-size:12px;color:var(--muted)}
     .contact-note{padding:15px;border:1px solid #164a70;border-radius:13px;background:#04111ddd;color:#cce7fb;font-size:12px}footer{padding:24px 0;color:#7895b2;font-size:11px}
