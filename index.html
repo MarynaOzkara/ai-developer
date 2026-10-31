@@ -43,6 +43,13 @@
 </header>
 
 <main>
+     <!-- STICKY -->
+    <div class="sticky" id="sticky">
+        <a class="sticky-btn" href="https://t.me/MarynaOzkara?text=Привіт%2C%20Марино!%20Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener">
+            <svg class="btn-icon" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-chat"></use></svg>
+            Обговорити проєкт
+        </a>
+    </div>
     <section class="hero hero-img" id="top">
         <div class="bage float">
             <span class="bage-icon">
@@ -478,18 +485,29 @@
 <footer>
     <div class="wrap footer-row">
         <a class="brand" href="#top">
-            <span class="logo">M</span>
+            <div class="logo">
+                <svg class="logo-icon" width="20" height="20">
+                    <use href="./assets/symbol-defs.svg#icon-code"></use>
+                </svg>
+            </div>
             <span>Марина Озкара<small>AI Website Specialist</small></span>
         </a>
-        <span>Сучасні AI-сайти для малого бізнесу</span>
-        <a href="https://t.me/MarynaOzkara" target="_blank" rel="noopener">Telegram ↗</a>
+        <p>&copy; <span id="current-year"></span> AI-сайти для малого бізнесу. Всі права захищені.</p>
+        <a class="icon" href="https://t.me/MarynaOzkara" target="_blank" rel="noopener">
+            <svg class="icon-fill" width="16" height="16">
+                <use href="./assets/symbol-defs.svg#icon-send"></use>
+            </svg>
+        </a>
     </div>
 </footer>
 <script>const steps=[...document.querySelectorAll('.step')];if('IntersectionObserver'in window){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){const i=steps.indexOf(e.target);setTimeout(()=>e.target.classList.add('visible'),i*240);obs.unobserve(e.target)}}),{threshold:.18});steps.forEach(s=>obs.observe(s))}else steps.forEach(s=>s.classList.add('visible'));</script>
-<a class="floating-cta" href="https://t.me/MarynaOzkara?text=Привіт%2C%20Марино!%20Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener" aria-label="Обговорити проєкт">➤ Обговорити проєкт <span aria-hidden="true">›</span></a>
 <button class="back-to-top" id="backToTop" type="button" aria-label="Повернутися нагору" title="Догори">↑</button>
 <script>
 (function(){const btn=document.getElementById('backToTop');if(!btn)return;const update=()=>{if(window.scrollY>320)btn.classList.add('visible');else btn.classList.remove('visible')};window.addEventListener('scroll',update,{passive:true});update();btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));})();
+
+</script>
+<script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
 
 </body></html>
