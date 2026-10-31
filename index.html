@@ -22,7 +22,14 @@
             </div>
             <span>Марина Озкара<small>AI Website Specialist</small></span>
         </a>
-        <nav>
+        <div class="language-switch" role="group" aria-label="Choose language">
+            <button type="button" data-lang="uk" class="active" aria-pressed="true">UA</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="main-menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-menu">
             <ul class="menu">
                 <li><a href="#services">Послуги</a></li>
                 <li><a href="#portfolio">Портфоліо</a></li>
@@ -500,14 +507,7 @@
         </a>
     </div>
 </footer>
-<script>const steps=[...document.querySelectorAll('.step')];if('IntersectionObserver'in window){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){const i=steps.indexOf(e.target);setTimeout(()=>e.target.classList.add('visible'),i*240);obs.unobserve(e.target)}}),{threshold:.18});steps.forEach(s=>obs.observe(s))}else steps.forEach(s=>s.classList.add('visible'));</script>
 <button class="back-to-top" id="backToTop" type="button" aria-label="Повернутися нагору" title="Догори">↑</button>
-<script>
-(function(){const btn=document.getElementById('backToTop');if(!btn)return;const update=()=>{if(window.scrollY>320)btn.classList.add('visible');else btn.classList.remove('visible')};window.addEventListener('scroll',update,{passive:true});update();btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));})();
 
-</script>
-<script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-</script>
-
+    <script src="./style.js" defer></script>
 </body></html>
