@@ -1175,16 +1175,15 @@
   .menu-toggle.active span:nth-child(2) { opacity: 0; }
   .menu-toggle.active span:last-child { transform: translateY(-7px) rotate(-45deg); }
   .main-nav {
-    position: absolute; top: calc(100% - 1px); left: 0; right: 0;
-    order: initial; flex: none; width: auto;
-    max-height: 0; overflow: hidden; opacity: 0; visibility: hidden;
-    padding: 0 15px; background: rgba(4,14,26,.98);
+    position: absolute; top: calc(100% - 1px); left: 0; right: 0;bottom: 0;
+    order: initial; flex: none; width: auto; overflow: hidden; opacity: 0; visibility: hidden;
+    background: rgba(4,14,26,.98);
     border: 0; border-bottom: 1px solid transparent;
     backdrop-filter: blur(16px);
-    transition: max-height .3s ease, opacity .25s ease, padding .3s ease, visibility .3s ease;
+    transition: height .3s ease, opacity .25s ease, padding .3s ease, visibility .3s ease;
   }
   .main-nav.open {
-    max-height: 360px; padding: 10px 15px 18px;
+    height: 100vh; padding: 10px 15px 18px;
     opacity: 1; visibility: visible; border-bottom-color: #16466a;
   }
   .menu { display: flex; flex-direction: column; gap: 0; width: 100%; }
@@ -1212,7 +1211,6 @@
 }
 .language-switch button.active { color: #fff; background: #12699a; }
 @media (max-width: 700px) {
-  .language-switch { order: 2; }
   .nav > div { display: none; }
 }
 
