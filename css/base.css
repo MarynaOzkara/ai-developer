@@ -385,15 +385,15 @@
     }
     .float{
         position: absolute;
-        top: 270px;
-        right: 100px;
+        top: 33%;
+        right: 8%;
         animation:float 3s ease-in-out infinite
     }
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
     .business{
         position:absolute;
-        top: 480px;
-        right: 670px;    
+        top: 65%;
+        right: 46%;    
     }
     .shine{
         isolation: isolate;
@@ -552,10 +552,7 @@
         align-items:center;
         justify-content:center;
         gap:8px;
-        border:1px solid #1389cb;
-        border-radius:30px;
-        padding:9px;
-        font-size:11px;
+        font-size:16px;
         color:#d7f3ff}
     .open:hover{background:#0a3553}
     .steps{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -900,11 +897,10 @@
         transition:max-height .3s ease, opacity .25s ease, padding .3s ease, visibility .3s ease;
     }
     .main-nav.open {
-        max-height:360px;
+        max-height:100vh;
         padding:10px 15px 18px;
         opacity:1;
         visibility:visible;
-        border-bottom-color:#16466a;
     }
     .menu {
         display:flex;
@@ -1148,6 +1144,10 @@
 @media (max-width: 950px) {
   .hero .bage { display: none !important; }
 }
+@media (min-width: 951px) and (max-width: 1024px) {
+  .hero .bage.float { top: 35%; right: 1% }
+  .hero .bage.business { top:65%; right: 40% }
+}
 
 /* Tablet navigation follows the compact mobile hamburger pattern. */
 @media (min-width: 701px) and (max-width: 950px) {
@@ -1184,7 +1184,7 @@
   }
   .main-nav.open {
     height: 100vh; padding: 10px 15px 18px;
-    opacity: 1; visibility: visible; border-bottom-color: #16466a;
+    opacity: 1; visibility: visible;
   }
   .menu { display: flex; flex-direction: column; gap: 0; width: 100%; }
   .menu li { border-bottom: 1px solid #ffffff12; }
