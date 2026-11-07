@@ -89,7 +89,7 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+    }, { threshold: 0.12, rootMargin: "0px 0px -30% 0px" });
     revealItems.forEach((item, index) => {
       item.classList.add('reveal-item');
       item.style.setProperty('--reveal-delay', `${(index % 4) * 85}ms`);

@@ -1,15 +1,453 @@
 <!doctype html>
-<html lang="uk"><head><meta charset="utf-8">
+<html lang="uk">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#040a13"><meta name="description" content="Сучасні AI-сайти для малого бізнесу. Дизайн, створення та публікація сайту під ваші цілі.">
+<meta name="theme-color" content="#040a13">
+<meta name="description" content="Сучасні AI-сайти для малого бізнесу. Дизайн, створення та публікація сайту під ваші цілі.">
 <title>Марина Озкара — AI вебсайт спеціаліст</title>
 <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-<link rel="preconnect" href="https://rsms.me/"> 
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-<link rel="stylesheet" href="./css/base.css">
+
+<!-- DNS / Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://t.me">
+
+<!-- Preload LCP hero image (CSS background — preload as image) -->
+<link rel="preload" as="image" href="./assets/hero-site.webp" fetchpriority="high">
+
+<!-- Critical CSS inline (above-fold, ~10 KB) -->
+<style>
+:root{
+    --bg:#040a13;
+    --panel:#071625;
+    --panel2:#0a2033;
+    --bgfs: #04111f;
+    --bghv: #082b49;
+    --brdfs: #6ee7b724;
+    --bricon: #155c8b;
+    --line:#12446b;
+    --blue:#12b8ff;
+    --cyan:#73e5ff;
+    --white:#f3f8ff;
+    --muted:#a8bfd4;
+    --grad: linear-gradient(135deg, #178bd0, #73e5ff, #a5b4fc);
+    --btngrad: linear-gradient(110deg,#08baf3 0%,#178bd0 100%);
+    --linegrad: linear-gradient(135deg, #c0f9e3, #08baf3, #a5b4fc, #c0f9e3);
+    --glow:0 0 28px #008dff24}
+
+    *{
+        box-sizing:border-box
+    }
+    html{
+        scroll-behavior:smooth;
+        scroll-padding-top:85px
+    }
+    body{
+        margin:0;
+        background:var(--bg);
+        color:var(--white);
+        font-family:Nunito,sans-serif;
+        line-height:1.5;
+        font-weight:400;
+        font-size:16px;
+    }
+    img{
+        display: block;
+        max-width: 100%;
+        height: auto;
+        width: 100%;
+    }
+    p{
+       margin:0;
+    }
+    h1, h2, h3, h4, h5, h6{
+        margin: 0;
+        font-family: Inter, sans-serif;
+}
+    ul{
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+    a{
+        color:inherit;
+        text-decoration:none
+    }
+    .wrap{
+        width:min(1280px,calc(100% - 42px));
+        margin:0 auto;
+    }
+    .flex{
+        display:flex;
+    }
+    .blue{
+        color: var(--blue)
+    }
+    .topbar{
+        position:absolute;
+        inset:0 0 auto;
+        height:72px;
+        z-index:10;
+        border-bottom:1px solid #ffffff17;
+        background:#030914a8;
+        backdrop-filter:blur(15px)
+    }
+    .nav{
+        height:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:20px
+    }
+    .brand{
+        display:flex;
+        align-items:center;
+        gap:11px;
+        font-weight:800;
+        font-size:14px
+    }
+    .brand small{
+        display:block;
+        font-size:10px;
+        color:#8bcff5;
+        font-weight:500
+    }
+    .logo{
+        width:42px;
+        height:42px;
+        display:grid;
+        place-items:center;
+        border:1px solid #178bd0;
+        border-radius:12px;
+        color:var(--cyan);
+        font-size:23px;
+        text-shadow:0 0 15px #00baff
+    }
+    .logo-icon{
+        fill: #178bd0;
+    }
+    .sticky {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    transition: bottom .45s cubic-bezier(.16, 1, .3, 1);
+    display: flex;
+    justify-content: center;
+    padding: 0 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    pointer-events: none;
+}
+.sticky-js .sticky.show {
+    bottom: 0;
+}
+.sticky .sticky-btn {
+    animation: bob 3s ease-in-out infinite;
+    pointer-events: auto;
+    max-width: 100%;
+}
+.sticky-btn {
+    font-weight: 700;
+    font-size: 16px;
+    color:var(--white);
+    background: var(--btngrad);
+    text-decoration: none;
+    padding: 18px 44px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap:9px;
+    gap: 10px;
+    box-shadow: 0 8px 40px rgba(192, 132, 252, .3), 0 0 0 1px rgba(192, 132, 252, .15);
+    transition: transform .2s, box-shadow .2s;
+    white-space: nowrap;
+}
+ @keyframes bob {
+                0%,100% {
+                    transform: translateY(0)
+                }
+
+                50% {
+                    transform: translateY(-4px)
+                }
+            }
+    .menu{
+        display:flex;
+        gap: 30px;
+
+    }
+    .menu a{
+        font-family: Inter, sans-serif;
+        font-size: medium;
+        letter-spacing: 0.1rem;
+         color:#d6e7f8
+    }
+    .menu a:hover{
+        color:var(--cyan)
+    }
+    .btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:9px;
+        padding:12px 19px;
+        border-radius:32px;
+        background: var(--btngrad);
+        box-shadow:0 0 25px #009fff32;
+        color:#fff;
+        font-family: Inter, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        transition:transform .2s,filter .2s;
+        cursor:pointer;
+        white-space: nowrap;
+    }
+    .btn-icon{
+        fill:var(--white)
+    }
+    .btn:hover{
+        transform:translateY(-2px);
+        filter:brightness(1.12)
+    }
+    .btn-outline{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:9px;
+        padding:12px 19px;
+        border-radius:32px;
+        background:transparent;
+        box-shadow:none;
+        border-color:#148fd0;
+        font-family: Inter, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        cursor:pointer;
+    }
+    .heder-btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:9px;
+        padding:6px 15px;
+        border-radius:32px;
+        background: var(--btngrad);
+        box-shadow:0 0 25px #009fff32;
+        color:#fff;
+        font-family: Inter, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        transition:transform .2s,filter .2s;
+        cursor:pointer
+    }
+    .heder-btn:hover{
+        filter:brightness(1.12)
+    }
+    /* HERO */
+    .hero{
+        position:relative;
+        isolation:isolate;
+        padding:126px 0 22px;
+        min-height:530px;
+        background-size:cover;
+        background-position:center center;
+        border-bottom:1px solid #123d60;
+        overflow:hidden
+    }
+    .hero:after{
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index:-1;
+        background:linear-gradient(0deg,#040a13 0%,transparent 19%)
+    }
+    .hero-copy{
+        max-width:50%;
+    }
+    .pill{
+        display:inline-flex;
+        align-items:center;
+        gap:12px;
+        padding:6px 24px 6px 12px;
+        border:1px solid #145e91;
+        border-radius:30px;
+        background:#061e37d9;
+        color:#c8edff;
+        font-size:11px;
+    }
+    .dot{
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background:var(--cyan);
+        position: relative;
+    }
+    .dot::after{
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 1.5px solid var(--cyan);
+        animation: pulse-ring 2s infinite;
+    }
+    @keyframes pulse-ring {
+                0% {
+                    transform: scale(.85);
+                    opacity: .5
+                }
+
+                100% {
+                    transform: scale(2.4);
+                    opacity: 0
+                }
+            }
+    h1{
+        font-size:clamp(36px,4.6vw,52px);
+        line-height:1.03;
+        letter-spacing:-.7px;
+        margin-top:32px;
+        font-weight: 800;
+    }
+    em{
+        font-style: normal;
+        background: var(--grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero-copy>p{
+        max-width:500px;
+        color:#d2e3f3;
+        font-size:18px;
+        margin:32px 0;
+    }
+    .hero-price{
+        margin-bottom: 20px;
+        display: flex;
+        gap: 15px;
+        align-items: baseline;
+        animation: slide-up .7s .28s both;
+        font-size: 14px;
+    }
+    .hero-price i{
+        font-weight: 700;
+        font-family: Inter, sans-serif;
+        font-size: 34px;
+        letter-spacing: -.03em;
+        font-style: normal;
+        background: var(--grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero-tags{
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        margin: 30px 0 30px 0;
+    }
+    .tag{
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--blue);
+        background: var(--bgfs);
+        border: 1px solid var(--brdfs);
+        padding: 6px 14px;
+        border-radius: 100px;
+        white-space: nowrap;
+    }
+    .tag:hover{
+        background: var(--bghv);
+    }
+    .hero-action{
+        display:flex;
+        justify-content:center;
+        width:min(325px,100%);
+        margin:21px 0 30px;
+        
+    }
+    .hero-action .btn{
+        width:100%;
+        padding:15px 22px;
+    }
+    .bage{
+        min-width:170px;
+        display:flex;
+        align-items:center;
+        gap:11px;
+        padding:11px 18px;
+        border:1px solid var(--brdfs);
+        border-radius:15px;
+        background:var(--bgfs);
+        white-space: nowrap;
+        font-size: 12px;
+    }
+    .bage:hover{
+        background:var(--bghv);
+    }
+    .bage-icon{
+        display:grid;
+        place-items:center;
+        width:39px;
+        height:39px;
+        flex-shrink:0;
+        border-radius:12px;
+        border:1px solid var(--bricon);
+        background: var(--bghv);
+        color:var(--cyan);
+        font-size:19px
+    }
+     .icon-fill{
+        fill:var(--blue)
+    }
+    .float{
+        position: absolute;
+        top: 33%;
+        right: 8%;
+        animation:float 3s ease-in-out infinite
+    }
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    .business{
+        position:absolute;
+        top: 65%;
+        right: 46%;    
+    }
+    .shine{
+        isolation: isolate;
+        overflow: hidden;
+    }
+     .shine::after{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -75%;
+        left: -40%;
+        width: 17%;
+        height: 250%;
+        transform: rotate(30deg);
+        background: linear-gradient(90deg, transparent, #fff9, transparent);
+        animation: shine 3.5s ease-in-out infinite;
+    }
+  
+    @keyframes shine{0%,18%{left:-40%}76%,100%{left:130%}}
+.sticky{bottom:-110px;opacity:0;visibility:hidden;transition:bottom .4s cubic-bezier(.16,1,.3,1),opacity .3s ease,visibility .3s ease}
+.sticky.show{bottom:0;opacity:1;visibility:visible}
+.back-to-top{position:fixed;right:24px;bottom:24px;z-index:31;width:46px;height:46px;display:grid;place-items:center;border:1px solid #19baff;border-radius:50%;background:#061a2bEF;color:#6be4ff;font-size:24px;box-shadow:0 0 22px #009cff45;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,transform .25s,visibility .25s}
+.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0);cursor:pointer}
+.menu-toggle{display:none}
+.reveal-item{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
+.reveal-item.is-visible{opacity:1;transform:translateY(0)}
+</style>
+
+<!-- Full CSS non-blocking (deferred via media=print trick) -->
+<link rel="stylesheet" href="./css/base.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="./css/base.css"></noscript>
+
+<!-- Fonts non-blocking (display=swap via URL param) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,800;1,14..32,400&family=Nunito:wght@400;500;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,800;1,14..32,400&family=Nunito:wght@400;500;700;800&display=swap"></noscript>
 </head>
 <body>
 <header class="topbar">
@@ -50,13 +488,14 @@
 </header>
 
 <main>
-     <!-- STICKY -->
+    <!-- STICKY CTA -->
     <div class="sticky" id="sticky">
         <a class="sticky-btn" href="https://t.me/OzkaraM?text=Привіт%2C%20Марино!%20Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener">
             <svg class="btn-icon" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-chat"></use></svg>
             Обговорити проєкт
         </a>
     </div>
+
     <section class="hero hero-img" id="top">
         <div class="bage float">
             <span class="bage-icon">
@@ -86,13 +525,9 @@
                    <span class="dot"></span>
                    Приймаю замовлення
                 </div>
-                <h1>Сайти для вашого бізнесу, які приносять <br><em>заявки і оплати</em>
-                </h1>
-                <p>
-                Створюю сучасні AI-сайти для малого бізнесу, що допомагають презентувати послуги та залучати клієнтів без зайвих витрат і технічних складнощів.
-                </p>
-                <span class="hero-price"><i>від 100 €</i> ціна залежить від типу сайту
-                </span> 
+                <h1>Сайти для вашого бізнесу, які приносять <br><em>заявки і оплати</em></h1>
+                <p>Створюю сучасні AI-сайти для малого бізнесу, що допомагають презентувати послуги та залучати клієнтів без зайвих витрат і технічних складнощів.</p>
+                <span class="hero-price"><i>від 100 €</i> ціна залежить від типу сайту</span>
                 <ul class="hero-tags">
                     <li class="tag">Прийом заявок</li>
                     <li class="tag">Оплата на сайті</li>
@@ -103,111 +538,62 @@
                     <a class="btn" href="https://t.me/OzkaraM?text=Привіт!Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener">
                         <svg class="btn-icon" width="16" height="16">
                             <use href="./assets/symbol-defs.svg#icon-send"></use>
-                        </svg> 
+                        </svg>
                         <p>Обговорити проєкт</p>
                     </a>
                 </div>                             
             </div>
         </div>
     </section>
-    <!-- Line -->
+
     <div id="sticky-trigger" style="height:1px;pointer-events:none"></div>
+
     <div class="runing-line">
         <ul class="line-list">
-            <li class="line-item">
-                <p class="line-text">Сайт на консультацію</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт офлайн-бізнесу</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт для продажу товару</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Міні-каталог</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт лід-магніту</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт мульти-лінк</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт на консультацію</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт офлайн-бізнесу</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт для продажу товару</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Міні-каталог</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт лід-магніту</p>
-                <span class="separ">◆</span>
-            </li>
-            <li class="line-item">
-                <p class="line-text">Сайт мульти-лінк</p>
-                <span class="separ">◆</span>
-            </li>
+            <li class="line-item"><p class="line-text">Сайт на консультацію</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт офлайн-бізнесу</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт для продажу товару</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Міні-каталог</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт лід-магніту</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт мульти-лінк</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт на консультацію</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт офлайн-бізнесу</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт для продажу товару</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Міні-каталог</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт лід-магніту</p><span class="separ">◆</span></li>
+            <li class="line-item"><p class="line-text">Сайт мульти-лінк</p><span class="separ">◆</span></li>
         </ul>
     </div>
-    <!-- Problems -->
+
     <section id="problems">
         <div class="wrap">
             <div class="section-head">
                 <div class="problem-wrap">
                     <span class="eyebrow">✦ Рішення</span>
-                    <h2>З якими <em>проблемами</em><br>ви стикаєтесь?
-                    </h2>
-                    <p class="sub">Допомагаю зрозуміло презентувати бізнес, щоб клієнти швидше знаходили потрібну інформацію та зв'язувалися з вами.
-                    </p>
+                    <h2>З якими <em>проблемами</em><br>ви стикаєтесь?</h2>
+                    <p class="sub">Допомагаю зрозуміло презентувати бізнес, щоб клієнти швидше знаходили потрібну інформацію та зв'язувалися з вами.</p>
                 </div>
                 <div class="grid problem-grid">
-                <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="16" height="16">
-                            <use href="./assets/symbol-defs.svg#icon-eye-blocked"></use>
-                        </svg>
-                    </div>
-                    <h3>Немає сучасного сайту, який презентує бізнес</h3>
-                    <p>Ваші послуги заслуговують на сучасну та зрозумілу онлайн-презентацію</p>
-                </article>
-                <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="20" height="20">
-                            <use href="./assets/symbol-defs.svg#icon-filter"></use>
-                        </svg>
-                    </div>
-                    <h3>Клієнти проходять мимо, <br> не залишають заявки</h3>
-                    <p>Зручна структура допомагає розповісти про пропозицію та наступний крок</p>
-                </article>
-                <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="24" height="24">
-                            <use href="./assets/symbol-defs.svg#icon-moneybag"></use>
-                        </svg>
-                    </div>
-                    <h3>Розробка сайту здається дорогою та складною</h3>
-                    <p>Пропоную зрозумілий процес і рішення під ваші цілі та бюджет</p>
-                </article>
-            </div>
+                    <article class="card">
+                        <div class="icon"><svg class="icon-fill" width="16" height="16"><use href="./assets/symbol-defs.svg#icon-eye-blocked"></use></svg></div>
+                        <h3>Немає сучасного сайту, який презентує бізнес</h3>
+                        <p>Ваші послуги заслуговують на сучасну та зрозумілу онлайн-презентацію</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon"><svg class="icon-fill" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-filter"></use></svg></div>
+                        <h3>Клієнти проходять мимо, не залишають заявки</h3>
+                        <p>Зручна структура допомагає розповісти про пропозицію та наступний крок</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon"><svg class="icon-fill" width="24" height="24"><use href="./assets/symbol-defs.svg#icon-moneybag"></use></svg></div>
+                        <h3>Розробка сайту здається дорогою та складною</h3>
+                        <p>Пропоную зрозумілий процес і рішення під ваші цілі та бюджет</p>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
-    <!-- Services -->
+
     <section id="services">
         <div class="wrap">
             <div class="section-head">
@@ -220,79 +606,51 @@
             </div>
             <div class="grid services">
                 <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="18" height="18">
-                            <use href="./assets/symbol-defs.svg#icon-link"></use>
-                        </svg>
-                    </div>
+                    <div class="icon"><svg class="icon-fill" width="18" height="18"><use href="./assets/symbol-defs.svg#icon-link"></use></svg></div>
                     <h3>Сайт-мульти-лінк</h3>
                     <p>Компактна сторінка з усіма посиланнями, кнопками і записом</p>
-                    <span class="price">від 100 €</і>
+                    <span class="price">від 100 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="16" height="16">
-                            <use href="./assets/symbol-defs.svg#icon-product"></use>
-                        </svg>
-                    </div>
+                    <div class="icon"><svg class="icon-fill" width="16" height="16"><use href="./assets/symbol-defs.svg#icon-product"></use></svg></div>
                     <h3>Сайт для продажу одного товару</h3>
                     <p>Один продукт з описом, відгуками, оплатою і доставкою</p>
-                    <div class="price">від 150 €</div>
+                    <span class="price">від 150 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="24" height="24">
-                            <use href="./assets/symbol-defs.svg#icon-star"></use>
-                        </svg>
-                    </div>
+                    <div class="icon"><svg class="icon-fill" width="24" height="24"><use href="./assets/symbol-defs.svg#icon-star"></use></svg></div>
                     <h3>Сайт з відгуками та кейсами</h3>
                     <p>Відео, сторіс, скріни відгуків — соціальний доказ, який продає</p>
-                    <div class="price">від 150 €</div>
+                    <span class="price">від 150 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="16" height="18">
-                            <use href="./assets/symbol-defs.svg#icon-magnet"></use>
-                        </svg>
-                    </div>
+                    <div class="icon"><svg class="icon-fill" width="16" height="18"><use href="./assets/symbol-defs.svg#icon-magnet"></use></svg></div>
                     <h3>Сайт лід-магніту</h3>
                     <p>Калькулятор, гайд або чек-лист — клієнт залишає контакт і потрапляє у воронку</p>
-                    <div class="price">від 150 €</div>
+                    <span class="price">від 150 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="24" height="24">
-                            <use href="./assets/symbol-defs.svg#icon-target"></use>
-                        </svg>
-                    </div>
+                    <div class="icon"><svg class="icon-fill" width="24" height="24"><use href="./assets/symbol-defs.svg#icon-target"></use></svg></div>
                     <h3>Сайт на консультацію</h3>
                     <p>Клієнт проходить квіз, прогрівається і записується на консультацію автоматично</p>
-                    <div class="price">від 150 €</div>
+                    <span class="price">від 150 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="18" height="18">
-                            <use href="./assets/symbol-defs.svg#icon-business"></use>
-                        </svg>
-                    </div>
+                    <div class="icon"><svg class="icon-fill" width="18" height="18"><use href="./assets/symbol-defs.svg#icon-business"></use></svg></div>
                     <h3>Сайт офлайн-бізнесу</h3>
                     <p>Кав'ярня, салон, клініка — меню, запис онлайн, карта, відгуки</p>
-                    <div class="price">від 250 €</div>
+                    <span class="price">від 250 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon">
-                        <svg class="icon-fill" width="18" height="18">
-                            <use href="./assets/symbol-defs.svg#icon-cart"></use>
-                        </svg>
-                    </div>
+                    <div class="icon"><svg class="icon-fill" width="18" height="18"><use href="./assets/symbol-defs.svg#icon-cart"></use></svg></div>
                     <h3>Міні-каталог</h3>
                     <p>Компактний каталог товарів або послуг з кошиком, фільтрами і оплатою на сайті</p>
-                    <div class="price">від 300 €</div>
+                    <span class="price">від 300 €</span>
                 </article>
             </div>
         </div>
     </section>
-    <!-- Portfolio -->
+
     <section id="portfolio">
         <div class="wrap">
             <div class="section-head">
@@ -305,37 +663,37 @@
             </div>
             <div class="grid portfolio"> 
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/business.jpg" alt="Дизайн сайту Eraze">
+                    <img class="project-img" src="./assets/portfolio/business.webp" alt="Дизайн сайту Eraze" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Eraze</h3>
                     <p>Сайт онлайн-бізнесу</p>
                     <a class="open" href="https://eraze-studio.netlify.app" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/calculator.jpg" alt="Дизайн калькулятора">
+                    <img class="project-img" src="./assets/portfolio/calculator.webp" alt="Дизайн калькулятора" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Калькулятор вартості кухні</h3>
                     <p>Інтерактивний сайт / лід-магніт</p>
                     <a class="open" href="https://kitchen-price.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/consultation.jpg" alt="Дизайн сайту консультації">
+                    <img class="project-img" src="./assets/portfolio/consultation.webp" alt="Дизайн сайту консультації" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Консультація</h3>
                     <p>Сайт на консультацію</p>
                     <a class="open" href="https://motty-present.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/mulitlink.jpg" alt="Сайт мульті-лінк">
+                    <img class="project-img" src="./assets/portfolio/mulitlink.webp" alt="Сайт мульті-лінк" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Майстер манікюру</h3>
                     <p>Сайт мульти-лінк</p>
                     <a class="open" href="https://master-manicure.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/e-commerce.jpg" alt="Дизайн міні-каталогу">
+                    <img class="project-img" src="./assets/portfolio/e-commerce.webp" alt="Дизайн міні-каталогу" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Motty</h3>
                     <p>Міні-каталог handmade подарунків</p>
                     <a class="open" href="https://motty-shop.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/oneitem.jpg" alt="Сайт одного товару">
+                    <img class="project-img" src="./assets/portfolio/oneitem.webp" alt="Сайт одного товару" width="900" height="497" loading="lazy" decoding="async">
                     <h3>PawGo</h3>
                     <p>Сайт для продажу одного товару</p>
                     <a class="open" href="https://pawgo-bag.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
@@ -343,7 +701,7 @@
             </div>
         </div>
     </section>
-    <!-- Process -->
+
     <section id="process">
         <div class="wrap">
             <div class="section-head">
@@ -378,6 +736,7 @@
             <p class="steps-note">Прозорість, підтримка на всіх етапах і дотримання узгоджених термінів.</p>
         </div>
     </section>
+
     <section id="benefits">
         <div class="wrap">
             <div class="section-head">
@@ -385,50 +744,32 @@
                     <div class="eyebrow">✦ Чому обирають мене</div>
                     <h2>Ваші <em>переваги</em></h2>
                     <p class="sub">Працюю на результат і дбаю про кожен проєкт.</p>
-                <div class="grid benefits">
-                <article class="benefit">
-                    <div class="icon">
-                        <svg class="icon-fill" width="20" height="20">
-                            <use href="./assets/symbol-defs.svg#icon-stars"></use>
-                        </svg>
+                    <div class="grid benefits">
+                        <article class="benefit">
+                            <div class="icon"><svg class="icon-fill" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-stars"></use></svg></div>
+                            <h3>AI-підхід</h3>
+                            <p>Сучасні інструменти для ефективної роботи</p>
+                        </article>
+                        <article class="benefit">
+                            <div class="icon"><svg class="icon-fill" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-wallet"></use></svg></div>
+                            <h3>Доступна ціна</h3>
+                            <p>Рішення під бюджет без зайвих витрат</p>
+                        </article>
+                        <article class="benefit">
+                            <div class="icon"><svg class="icon-fill" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-time"></use></svg></div>
+                            <h3>Швидкі терміни</h3>
+                            <p>Орієнтовно 3–7 днів на створення</p>
+                        </article>
+                        <article class="benefit">
+                            <div class="icon"><svg class="icon-fill" width="22" height="22"><use href="./assets/symbol-defs.svg#icon-waves"></use></svg></div>
+                            <h3>Гнучкість</h3>
+                            <p>Дизайн і функції під ваші цілі</p>
+                        </article>
                     </div>
-                    <h3>AI-підхід</h3>
-                    <p>Сучасні інструменти для ефективної роботи</p>
-                </article>
-                <article class="benefit">
-                    <div class="icon">
-                        <svg class="icon-fill" width="20" height="20">
-                            <use href="./assets/symbol-defs.svg#icon-wallet"></use>
-                        </svg>
-                    </div>
-                    <h3>Доступна ціна</h3>
-                    <p>Рішення під бюджет без зайвих витрат</p>
-                </article>
-                <article class="benefit">
-                    <div class="icon">
-                        <svg class="icon-fill" width="20" height="20">
-                            <use href="./assets/symbol-defs.svg#icon-time"></use>
-                        </svg>
-                    </div>
-                    <h3>Швидкі терміни</h3>
-                    <p>Орієнтовно 3–7 днів на створення</p>
-                </article>
-                <article class="benefit">
-                    <div class="icon">
-                        <svg class="icon-fill" width="22" height="22">
-                            <use href="./assets/symbol-defs.svg#icon-waves"></use>
-                        </svg>
-                    </div>
-                    <h3>Гнучкість</h3>
-                    <p>Дизайн і функції під ваші цілі</p>
-                </article> 
-            </div>
                 </div>
                 <div class="bonus">
                     <div class="gift">
-                        <svg class="icon-fill" width="30" height="30">
-                            <use href="./assets/symbol-defs.svg#icon-gift"></use>
-                        </svg>
+                        <svg class="icon-fill" width="30" height="30"><use href="./assets/symbol-defs.svg#icon-gift"></use></svg>
                     </div>
                     <div class="bonus-tag">✦ Бонус</div>
                     <h3><em>Допомога з доменом</em> <br>і публікацією сайту</h3>
@@ -438,6 +779,7 @@
             </div>  
         </div>
     </section>
+
     <section id="faq">
         <div class="wrap">
             <div class="section-head">
@@ -474,43 +816,40 @@
             </div>
         </div>
     </section>
+
     <section id="contact">   
-            <div class="contact">
-                <div>
+        <div class="contact">
+            <div>
                 <h2>Готові створити свій сайт?</h2>
                 <p>Напишіть у Telegram — обговоримо проєкт і підберемо рішення для вашого бізнесу.</p>
-                </div>
-                <a class="btn" href="https://t.me/OzkaraM?text=Привіт!%20Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener">
-                    <svg class="btn-icon" width="20" height="20">
-                        <use href="./assets/symbol-defs.svg#icon-chat"></use>
-                    </svg>
-                    Обговорити проект</a>
             </div>
-            
+            <a class="btn" href="https://t.me/OzkaraM?text=Привіт!%20Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener">
+                <svg class="btn-icon" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-chat"></use></svg>
+                Обговорити проект
+            </a>
+        </div>
     </section>
 </main>
+
 <footer>
     <div class="wrap footer-row">
         <a class="brand" href="#top">
             <div class="logo">
-                <svg class="logo-icon" width="20" height="20">
-                    <use href="./assets/symbol-defs.svg#icon-code"></use>
-                </svg>
+                <svg class="logo-icon" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-code"></use></svg>
             </div>
             <span>Марина Озкара<small>AI Website Specialist</small></span>
         </a>
         <p>&copy; <span id="current-year"></span> AI-сайти для малого бізнесу. Всі права захищені.</p>
         <div>
             <a class="icon" href="https://t.me/OzkaraM" target="_blank" rel="noopener">
-            <svg class="icon-fill" width="16" height="16">
-                <use href="./assets/symbol-defs.svg#icon-send"></use>
-            </svg>
-        </a>
+                <svg class="icon-fill" width="16" height="16"><use href="./assets/symbol-defs.svg#icon-send"></use></svg>
+            </a>
         </div>
-        
     </div>
 </footer>
+
 <button class="back-to-top" id="backToTop" type="button" aria-label="Повернутися нагору" title="Догори">↑</button>
 
-    <script src="./style.js" defer></script>
-</body></html>
+<script src="./style.js" defer></script>
+</body>
+</html>
