@@ -712,6 +712,7 @@
     .benefits{grid-template-columns:repeat(3,1fr)}
     .hero{background-position:58% center}}
 @media(max-width:700px){
+    .wrap{width:calc(100% - 32px)}
     .topbar{height:auto}
     .nav{padding:10px 0;flex-wrap:wrap}
     .navlinks{order:3;width:100%;justify-content:center;gap:15px;font-size:11px}
@@ -734,7 +735,6 @@
     .contact-note{max-width:450px;margin:auto}
     .footer-row{flex-direction:column;text-align:center}}
 @media(max-width:430px){
-    .wrap{width:calc(100% - 30px)}
     .brand{font-size:12px}
     .navlinks{gap:10px}
     .hero{min-height:720px}
@@ -965,7 +965,6 @@
     .contact .btn { white-space:normal; }
 }
 @media (max-width: 430px) {
-    .wrap { width:calc(100% - 32px); }
     .hero { padding-top:105px; padding-bottom:34px; background-position:58% center; }
     .hero h1 { font-size:clamp(32px,9vw,39px); }
     .hero-copy > p { font-size:15px; }
