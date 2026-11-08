@@ -399,7 +399,7 @@
         overflow: hidden;
     }
      .shine::after{
-        content: "";
+       content: "";
         position: absolute;
         z-index: -1;
         top: -75%;
@@ -411,12 +411,14 @@
         animation: shine 3.5s ease-in-out infinite;
     }
   
-    @keyframes shine{0%,18%{left:-40%}76%,100%{left:130%}}
+    @keyframes shine{0%, 18% {left: -40%;}76%, 100% {left: 130%;}}
     /* Runing line */
 .runing-line {
     padding: 0;
     overflow: hidden;
     position: relative;
+    height: 50px;
+    contain: layout size;
     background:var(--linegrad);
     background-size: 300% 100%;
     animation: gradient-shift 8s linear infinite;
@@ -438,7 +440,7 @@
     white-space: nowrap;
 }
 .line-text {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: Inter, sans-serif;
     font-size: 14px;
     font-weight: 700;
     color: #06060a;

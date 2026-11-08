@@ -8,16 +8,37 @@
 <title>Марина Озкара — AI вебсайт спеціаліст</title>
 <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 
-<!-- DNS / Preconnect -->
+<!-- Preconnect & DNS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://t.me">
 
-<!-- Preload LCP hero image (CSS background — preload as image) -->
+<!-- Fonts BLOCKING — prevents CLS from font-swap (critical for CLS < 0.1) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,800;1,14..32,400&family=Nunito:wght@400;500;700;800&display=optional">
+
+<!-- Preload LCP hero image -->
 <link rel="preload" as="image" href="./assets/hero-site.webp" fetchpriority="high">
 
-<!-- Critical CSS inline (above-fold, ~10 KB) -->
+<!-- Critical CSS inline -->
 <style>
+
+/* Fallback font metrics to minimize CLS from font-swap */
+@font-face {
+    font-family: 'Inter-fallback';
+    src: local('Arial');
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 107%;
+}
+@font-face {
+    font-family: 'Nunito-fallback';
+    src: local('Arial');
+    ascent-override: 100%;
+    descent-override: 25%;
+    line-gap-override: 0%;
+    size-adjust: 102%;
+}
 :root{
     --bg:#040a13;
     --panel:#071625;
@@ -47,7 +68,7 @@
         margin:0;
         background:var(--bg);
         color:var(--white);
-        font-family:Nunito,sans-serif;
+        font-family:Nunito,'Nunito-fallback',sans-serif;
         line-height:1.5;
         font-weight:400;
         font-size:16px;
@@ -63,7 +84,7 @@
     }
     h1, h2, h3, h4, h5, h6{
         margin: 0;
-        font-family: Inter, sans-serif;
+        font-family: Inter, 'Inter-fallback', sans-serif;
 }
     ul{
     margin: 0;
@@ -179,7 +200,7 @@
 
     }
     .menu a{
-        font-family: Inter, sans-serif;
+        font-family: Inter, 'Inter-fallback', sans-serif;
         font-size: medium;
         letter-spacing: 0.1rem;
          color:#d6e7f8
@@ -197,7 +218,7 @@
         background: var(--btngrad);
         box-shadow:0 0 25px #009fff32;
         color:#fff;
-        font-family: Inter, sans-serif;
+        font-family: Inter, 'Inter-fallback', sans-serif;
         font-size: 16px;
         font-weight: 600;
         transition:transform .2s,filter .2s;
@@ -221,7 +242,7 @@
         background:transparent;
         box-shadow:none;
         border-color:#148fd0;
-        font-family: Inter, sans-serif;
+        font-family: Inter, 'Inter-fallback', sans-serif;
         font-size: 16px;
         font-weight: 400;
         cursor:pointer;
@@ -236,7 +257,7 @@
         background: var(--btngrad);
         box-shadow:0 0 25px #009fff32;
         color:#fff;
-        font-family: Inter, sans-serif;
+        font-family: Inter, 'Inter-fallback', sans-serif;
         font-size: 11px;
         font-weight: 600;
         transition:transform .2s,filter .2s;
@@ -333,7 +354,7 @@
     }
     .hero-price i{
         font-weight: 700;
-        font-family: Inter, sans-serif;
+        font-family: Inter, 'Inter-fallback', sans-serif;
         font-size: 34px;
         letter-spacing: -.03em;
         font-style: normal;
@@ -423,15 +444,55 @@
         position: absolute;
         z-index: -1;
         top: -75%;
-        left: -40%;
+        left: 0;
         width: 17%;
         height: 250%;
-        transform: rotate(30deg);
+        transform: translateX(-140%) rotate(30deg);
         background: linear-gradient(90deg, transparent, #fff9, transparent);
         animation: shine 3.5s ease-in-out infinite;
     }
   
-    @keyframes shine{0%,18%{left:-40%}76%,100%{left:130%}}
+    @keyframes shine{0%,18%{transform:translateX(-140%) rotate(30deg)}76%,100%{transform:translateX(530%) rotate(30deg)}}
+    /* Runing line */
+.runing-line {
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    height: 50px;
+    contain: layout size;
+    background:var(--linegrad);
+    background-size: 300% 100%;
+    animation: gradient-shift 8s linear infinite;
+}
+@keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.line-list {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.line-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    white-space: nowrap;
+}
+.line-text {
+    font-family: Inter, 'Inter-fallback', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #06060a;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+.separ {
+    margin: 0 24px;
+    font-size: 10px;
+    color: rgba(6, 6, 10, .3);
+}
 .sticky{bottom:-110px;opacity:0;visibility:hidden;transition:bottom .4s cubic-bezier(.16,1,.3,1),opacity .3s ease,visibility .3s ease}
 .sticky.show{bottom:0;opacity:1;visibility:visible}
 .back-to-top{position:fixed;right:24px;bottom:24px;z-index:31;width:46px;height:46px;display:grid;place-items:center;border:1px solid #19baff;border-radius:50%;background:#061a2bEF;color:#6be4ff;font-size:24px;box-shadow:0 0 22px #009cff45;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,transform .25s,visibility .25s}
@@ -439,22 +500,19 @@
 .menu-toggle{display:none}
 .reveal-item{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
 .reveal-item.is-visible{opacity:1;transform:translateY(0)}
+.runing-line{padding:0;overflow:hidden;position:relative;height:50px;contain:layout size}
 </style>
 
-<!-- Full CSS non-blocking (deferred via media=print trick) -->
+<!-- Full CSS non-blocking -->
 <link rel="stylesheet" href="./css/base.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="./css/base.css"></noscript>
-
-<!-- Fonts non-blocking (display=swap via URL param) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,800;1,14..32,400&family=Nunito:wght@400;500;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,800;1,14..32,400&family=Nunito:wght@400;500;700;800&display=swap"></noscript>
 </head>
 <body>
 <header class="topbar">
     <div class="wrap nav">
         <a class="brand" href="#top">
             <div class="logo">
-                <svg class="logo-icon" width="20" height="20">
+                <svg class="logo-icon" width="20" height="20" aria-hidden="true">
                     <use href="./assets/symbol-defs.svg#icon-code"></use>
                 </svg>
             </div>
@@ -478,20 +536,19 @@
         </button>
         <div>
             <a class="heder-btn" href="https://t.me/OzkaraM" target="_blank" rel="noopener">
-                <svg class="btn-icon" width="10" height="10">
-                        <use href="./assets/symbol-defs.svg#icon-send"></use>
+                <svg class="btn-icon" width="10" height="10" aria-hidden="true">
+                    <use href="./assets/symbol-defs.svg#icon-send"></use>
                 </svg>
-                <p>Написати в Telegram</p>  
+                <span>Написати в Telegram</span>
             </a>
         </div>
     </div>
 </header>
 
 <main>
-    <!-- STICKY CTA -->
     <div class="sticky" id="sticky">
         <a class="sticky-btn" href="https://t.me/OzkaraM?text=Привіт%2C%20Марино!%20Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener">
-            <svg class="btn-icon" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-chat"></use></svg>
+            <svg class="btn-icon" width="20" height="20" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-chat"></use></svg>
             Обговорити проєкт
         </a>
     </div>
@@ -499,7 +556,7 @@
     <section class="hero hero-img" id="top">
         <div class="bage float">
             <span class="bage-icon">
-                <svg class="icon-fill" width="20" height="20">
+                <svg class="icon-fill" width="20" height="20" aria-hidden="true">
                     <use href="./assets/symbol-defs.svg#icon-flash"></use>
                 </svg>
             </span>
@@ -510,7 +567,7 @@
         </div>
         <div class="bage business shine">
             <span class="bage-icon">
-                <svg class="icon-fill" width="15" height="15">
+                <svg class="icon-fill" width="15" height="15" aria-hidden="true">
                     <use href="./assets/symbol-defs.svg#icon-shield"></use>
                 </svg>
             </span>
@@ -536,19 +593,19 @@
                 </ul>              
                 <div class="hero-action">
                     <a class="btn" href="https://t.me/OzkaraM?text=Привіт!Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener">
-                        <svg class="btn-icon" width="16" height="16">
+                        <svg class="btn-icon" width="16" height="16" aria-hidden="true">
                             <use href="./assets/symbol-defs.svg#icon-send"></use>
                         </svg>
-                        <p>Обговорити проєкт</p>
+                        <span>Обговорити проєкт</span>
                     </a>
-                </div>                             
+                </div>
             </div>
         </div>
     </section>
 
     <div id="sticky-trigger" style="height:1px;pointer-events:none"></div>
 
-    <div class="runing-line">
+    <div class="runing-line" aria-hidden="true">
         <ul class="line-list">
             <li class="line-item"><p class="line-text">Сайт на консультацію</p><span class="separ">◆</span></li>
             <li class="line-item"><p class="line-text">Сайт офлайн-бізнесу</p><span class="separ">◆</span></li>
@@ -575,17 +632,17 @@
                 </div>
                 <div class="grid problem-grid">
                     <article class="card">
-                        <div class="icon"><svg class="icon-fill" width="16" height="16"><use href="./assets/symbol-defs.svg#icon-eye-blocked"></use></svg></div>
+                        <div class="icon"><svg class="icon-fill" width="16" height="16" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-eye-blocked"></use></svg></div>
                         <h3>Немає сучасного сайту, який презентує бізнес</h3>
                         <p>Ваші послуги заслуговують на сучасну та зрозумілу онлайн-презентацію</p>
                     </article>
                     <article class="card">
-                        <div class="icon"><svg class="icon-fill" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-filter"></use></svg></div>
+                        <div class="icon"><svg class="icon-fill" width="20" height="20" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-filter"></use></svg></div>
                         <h3>Клієнти проходять мимо, не залишають заявки</h3>
                         <p>Зручна структура допомагає розповісти про пропозицію та наступний крок</p>
                     </article>
                     <article class="card">
-                        <div class="icon"><svg class="icon-fill" width="24" height="24"><use href="./assets/symbol-defs.svg#icon-moneybag"></use></svg></div>
+                        <div class="icon"><svg class="icon-fill" width="24" height="24" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-moneybag"></use></svg></div>
                         <h3>Розробка сайту здається дорогою та складною</h3>
                         <p>Пропоную зрозумілий процес і рішення під ваші цілі та бюджет</p>
                     </article>
@@ -606,43 +663,43 @@
             </div>
             <div class="grid services">
                 <article class="card">
-                    <div class="icon"><svg class="icon-fill" width="18" height="18"><use href="./assets/symbol-defs.svg#icon-link"></use></svg></div>
+                    <div class="icon"><svg class="icon-fill" width="18" height="18" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-link"></use></svg></div>
                     <h3>Сайт-мульти-лінк</h3>
                     <p>Компактна сторінка з усіма посиланнями, кнопками і записом</p>
                     <span class="price">від 100 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon"><svg class="icon-fill" width="16" height="16"><use href="./assets/symbol-defs.svg#icon-product"></use></svg></div>
+                    <div class="icon"><svg class="icon-fill" width="16" height="16" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-product"></use></svg></div>
                     <h3>Сайт для продажу одного товару</h3>
                     <p>Один продукт з описом, відгуками, оплатою і доставкою</p>
                     <span class="price">від 150 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon"><svg class="icon-fill" width="24" height="24"><use href="./assets/symbol-defs.svg#icon-star"></use></svg></div>
+                    <div class="icon"><svg class="icon-fill" width="24" height="24" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-star"></use></svg></div>
                     <h3>Сайт з відгуками та кейсами</h3>
                     <p>Відео, сторіс, скріни відгуків — соціальний доказ, який продає</p>
                     <span class="price">від 150 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon"><svg class="icon-fill" width="16" height="18"><use href="./assets/symbol-defs.svg#icon-magnet"></use></svg></div>
+                    <div class="icon"><svg class="icon-fill" width="16" height="18" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-magnet"></use></svg></div>
                     <h3>Сайт лід-магніту</h3>
                     <p>Калькулятор, гайд або чек-лист — клієнт залишає контакт і потрапляє у воронку</p>
                     <span class="price">від 150 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon"><svg class="icon-fill" width="24" height="24"><use href="./assets/symbol-defs.svg#icon-target"></use></svg></div>
+                    <div class="icon"><svg class="icon-fill" width="24" height="24" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-target"></use></svg></div>
                     <h3>Сайт на консультацію</h3>
                     <p>Клієнт проходить квіз, прогрівається і записується на консультацію автоматично</p>
                     <span class="price">від 150 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon"><svg class="icon-fill" width="18" height="18"><use href="./assets/symbol-defs.svg#icon-business"></use></svg></div>
+                    <div class="icon"><svg class="icon-fill" width="18" height="18" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-business"></use></svg></div>
                     <h3>Сайт офлайн-бізнесу</h3>
                     <p>Кав'ярня, салон, клініка — меню, запис онлайн, карта, відгуки</p>
                     <span class="price">від 250 €</span>
                 </article>
                 <article class="card">
-                    <div class="icon"><svg class="icon-fill" width="18" height="18"><use href="./assets/symbol-defs.svg#icon-cart"></use></svg></div>
+                    <div class="icon"><svg class="icon-fill" width="18" height="18" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-cart"></use></svg></div>
                     <h3>Міні-каталог</h3>
                     <p>Компактний каталог товарів або послуг з кошиком, фільтрами і оплатою на сайті</p>
                     <span class="price">від 300 €</span>
@@ -661,39 +718,63 @@
                 </div>
                 <a class="btn btn-outline" href="https://t.me/OzkaraM" target="_blank" rel="noopener">Обговорити проєкт　→</a>
             </div>
-            <div class="grid portfolio"> 
+            <div class="grid portfolio">
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/business.webp" alt="Дизайн сайту Eraze" width="600" height="326" loading="lazy" decoding="async">
+                    <img class="project-img"
+                        src="./assets/portfolio/business.webp"
+                        srcset="./assets/portfolio/business-sm.webp 640w, ./assets/portfolio/business.webp 900w"
+                        sizes="(max-width:600px) 100vw, 50vw"
+                        alt="Дизайн сайту Eraze" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Eraze</h3>
                     <p>Сайт онлайн-бізнесу</p>
                     <a class="open" href="https://eraze-studio.netlify.app" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/calculator.webp" alt="Дизайн калькулятора" width="600" height="331" loading="lazy" decoding="async">
+                    <img class="project-img"
+                        src="./assets/portfolio/calculator.webp"
+                        srcset="./assets/portfolio/calculator-sm.webp 640w, ./assets/portfolio/calculator.webp 900w"
+                        sizes="(max-width:600px) 100vw, 50vw"
+                        alt="Дизайн калькулятора" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Калькулятор вартості кухні</h3>
                     <p>Інтерактивний сайт / лід-магніт</p>
                     <a class="open" href="https://kitchen-price.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/consultation.webp" alt="Дизайн сайту консультації" width="600" height="331" loading="lazy" decoding="async">
+                    <img class="project-img"
+                        src="./assets/portfolio/consultation.webp"
+                        srcset="./assets/portfolio/consultation-sm.webp 640w, ./assets/portfolio/consultation.webp 900w"
+                        sizes="(max-width:600px) 100vw, 50vw"
+                        alt="Дизайн сайту консультації" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Консультація</h3>
                     <p>Сайт на консультацію</p>
                     <a class="open" href="https://motty-present.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/mulitlink.webp" alt="Сайт мульті-лінк" width="600" height="332" loading="lazy" decoding="async">
+                    <img class="project-img"
+                        src="./assets/portfolio/mulitlink.webp"
+                        srcset="./assets/portfolio/mulitlink-sm.webp 640w, ./assets/portfolio/mulitlink.webp 900w"
+                        sizes="(max-width:600px) 100vw, 50vw"
+                        alt="Сайт мульті-лінк" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Майстер манікюру</h3>
                     <p>Сайт мульти-лінк</p>
                     <a class="open" href="https://master-manicure.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/e-commerce.webp" alt="Дизайн міні-каталогу" width="600" height="307" loading="lazy" decoding="async">
+                    <img class="project-img"
+                        src="./assets/portfolio/e-commerce.webp"
+                        srcset="./assets/portfolio/e-commerce-sm.webp 640w, ./assets/portfolio/e-commerce.webp 900w"
+                        sizes="(max-width:600px) 100vw, 50vw"
+                        alt="Дизайн міні-каталогу" width="900" height="497" loading="lazy" decoding="async">
                     <h3>Motty</h3>
                     <p>Міні-каталог handmade подарунків</p>
                     <a class="open" href="https://motty-shop.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
                 </article>
                 <article class="card project">
-                    <img class="project-img" src="./assets/portfolio/oneitem.webp" alt="Сайт одного товару" width="600" height="311" loading="lazy" decoding="async">
+                    <img class="project-img"
+                        src="./assets/portfolio/oneitem.webp"
+                        srcset="./assets/portfolio/oneitem-sm.webp 640w, ./assets/portfolio/oneitem.webp 900w"
+                        sizes="(max-width:600px) 100vw, 50vw"
+                        alt="Сайт одного товару" width="900" height="497" loading="lazy" decoding="async">
                     <h3>PawGo</h3>
                     <p>Сайт для продажу одного товару</p>
                     <a class="open" href="https://pawgo-bag.netlify.app/" target="_blank" rel="noopener">Відкрити проєкт ↗</a>
@@ -746,22 +827,22 @@
                     <p class="sub">Працюю на результат і дбаю про кожен проєкт.</p>
                     <div class="grid benefits">
                         <article class="benefit">
-                            <div class="icon"><svg class="icon-fill" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-stars"></use></svg></div>
+                            <div class="icon"><svg class="icon-fill" width="20" height="20" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-stars"></use></svg></div>
                             <h3>AI-підхід</h3>
                             <p>Сучасні інструменти для ефективної роботи</p>
                         </article>
                         <article class="benefit">
-                            <div class="icon"><svg class="icon-fill" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-wallet"></use></svg></div>
+                            <div class="icon"><svg class="icon-fill" width="20" height="20" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-wallet"></use></svg></div>
                             <h3>Доступна ціна</h3>
                             <p>Рішення під бюджет без зайвих витрат</p>
                         </article>
                         <article class="benefit">
-                            <div class="icon"><svg class="icon-fill" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-time"></use></svg></div>
+                            <div class="icon"><svg class="icon-fill" width="20" height="20" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-time"></use></svg></div>
                             <h3>Швидкі терміни</h3>
                             <p>Орієнтовно 3–7 днів на створення</p>
                         </article>
                         <article class="benefit">
-                            <div class="icon"><svg class="icon-fill" width="22" height="22"><use href="./assets/symbol-defs.svg#icon-waves"></use></svg></div>
+                            <div class="icon"><svg class="icon-fill" width="22" height="22" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-waves"></use></svg></div>
                             <h3>Гнучкість</h3>
                             <p>Дизайн і функції під ваші цілі</p>
                         </article>
@@ -769,12 +850,12 @@
                 </div>
                 <div class="bonus">
                     <div class="gift">
-                        <svg class="icon-fill" width="30" height="30"><use href="./assets/symbol-defs.svg#icon-gift"></use></svg>
+                        <svg class="icon-fill" width="30" height="30" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-gift"></use></svg>
                     </div>
                     <div class="bonus-tag">✦ Бонус</div>
                     <h3><em>Допомога з доменом</em> <br>і публікацією сайту</h3>
                     <p class="sub btext">Займусь технічною стороною, щоб ви могли зосередитися на своєму бізнесі.</p>
-                    <a class="icon bonus-link" href="https://t.me/OzkaraM" target="_blank" rel="noopener">→</a>
+                    <a class="icon bonus-link" href="https://t.me/OzkaraM" target="_blank" rel="noopener" aria-label="Написати в Telegram">→</a>
                 </div>
             </div>  
         </div>
@@ -824,7 +905,7 @@
                 <p>Напишіть у Telegram — обговоримо проєкт і підберемо рішення для вашого бізнесу.</p>
             </div>
             <a class="btn" href="https://t.me/OzkaraM?text=Привіт!%20Хочу%20обговорити%20створення%20сайту" target="_blank" rel="noopener">
-                <svg class="btn-icon" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-chat"></use></svg>
+                <svg class="btn-icon" width="20" height="20" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-chat"></use></svg>
                 Обговорити проект
             </a>
         </div>
@@ -835,14 +916,14 @@
     <div class="wrap footer-row">
         <a class="brand" href="#top">
             <div class="logo">
-                <svg class="logo-icon" width="20" height="20"><use href="./assets/symbol-defs.svg#icon-code"></use></svg>
+                <svg class="logo-icon" width="20" height="20" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-code"></use></svg>
             </div>
             <span>Марина Озкара<small>AI Website Specialist</small></span>
         </a>
         <p>&copy; <span id="current-year"></span> AI-сайти для малого бізнесу. Всі права захищені.</p>
         <div>
-            <a class="icon" href="https://t.me/OzkaraM" target="_blank" rel="noopener">
-                <svg class="icon-fill" width="16" height="16"><use href="./assets/symbol-defs.svg#icon-send"></use></svg>
+            <a class="icon" href="https://t.me/OzkaraM" target="_blank" rel="noopener" aria-label="Написати в Telegram">
+                <svg class="icon-fill" width="16" height="16" aria-hidden="true"><use href="./assets/symbol-defs.svg#icon-send"></use></svg>
             </a>
         </div>
     </div>
