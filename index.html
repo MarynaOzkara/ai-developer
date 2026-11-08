@@ -440,19 +440,19 @@
         overflow: hidden;
     }
      .shine::after{
-        content: "";
+       content: "";
         position: absolute;
         z-index: -1;
         top: -75%;
-        left: 0;
+        left: -40%;
         width: 17%;
         height: 250%;
-        transform: translateX(-140%) rotate(30deg);
+        transform: rotate(30deg);
         background: linear-gradient(90deg, transparent, #fff9, transparent);
         animation: shine 3.5s ease-in-out infinite;
     }
   
-    @keyframes shine{0%,18%{transform:translateX(-140%) rotate(30deg)}76%,100%{transform:translateX(530%) rotate(30deg)}}
+    @keyframes shine{0%, 18% {left: -40%;}76%, 100% {left: 130%;}}
     /* Runing line */
 .runing-line {
     padding: 0;
